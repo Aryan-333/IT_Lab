@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Birthday Card</title>
+	<style>
+		.split {
+			height: 100%;
+			width: 50%;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			overflow-x: hidden;
+			padding-top: 20px;
+		}
+		.left {
+			left: 0;
+			background-color: white;
+		}
+		.right {
+			right: 0;
+			background-color: red;
+		}
+		.centered {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="split left">
+		<!-- Add your content for the left section here -->
+	</div>
+	<div class="split right">
+		<select id="color" onchange="changeColor()">
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+		</select>
+		<!-- Add your content for the right section here -->
+	</div>
+	<script>
+		function changeColor() {
+			var color = document.getElementById("color").value;
+			document.getElementsByClassName("right")[0].style.backgroundColor = color;
+		}
+	</script>
+</body>
+</html>
