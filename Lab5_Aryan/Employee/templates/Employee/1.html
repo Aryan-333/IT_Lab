@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Promotion Eligibility Checker</title>
+</head>
+<body>
+	<h2>Employee Promotion Eligibility Checker</h2>
+	<form id="promotionForm">
+		<label for="employeeId">Employee ID:</label>
+		<select id="employeeId">
+			<option value="emp001">Employee 001</option>
+			<option value="emp002">Employee 002</option>
+			<option value="emp003">Employee 003</option>
+			<!-- Add more employee IDs here -->
+		</select>
+		<br><br>
+		<label for="dateOfJoining">Date of Joining:</label>
+		<input type="text" id="dateOfJoining" placeholder="YYYY-MM-DD">
+
+		<br><br>
+		<button type="button" onclick="checkEligibility()">Am I Eligible for Promotion?</button>
+		<br><br>
+		<label id="eligibilityResult"></label>
+	</form>
+
+	<script>
+        function checkEligibility() {
+			var employeeId = document.getElementById('employeeId').value;
+			var dateOfJoiningString = document.getElementById('dateOfJoining').value;
+			var dateOfJoining = new Date(dateOfJoiningString.replace(/-/g, '/'));
+			var currentDate = new Date();
+            var yearsOfExperience = (currentDate - dateOfJoining) / (1000 * 60 * 60 * 24 * 365); 
+
+            if (yearsOfExperience >= 5) {
+                document.getElementById('eligibilityResult').textContent = "YES";
+            } else {
+                document.getElementById('eligibilityResult').textContent = "NO";
+            }
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Registration Form</title>
+	<style>
+		h2 {
+			font-family: Sans-serif;
+			font-size: 24px;
+			font-weight: bold;
+			color: blue;
+			text-align: center;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<h2>Student Registration Form Using Table in HTML</h2>
+	<form id="studentForm">
+		<table align="center">
+			<tr>
+				<td><label for="name">Name:</label></td>
+				<td><input type="text" id="name" name="name" ></td>
+			</tr>
+			<tr>
+				<td><label for="dob">Date of Birth:</label></td>
+				<td><input type="date" id="dob" name="dob" ></td>
+			</tr>
+			<tr>
+				<td><label for="address">Address:</label></td>
+				<td><input type="text" id="address" name="address" ></td>
+			</tr>
+			<tr>
+				<td><label for="contact">Contact Number:</label></td>
+				<td><input type="tel" id="contact" name="contact" ></td>
+			</tr>
+			<tr>
+				<td><label for="email">Email ID:</label></td>
+				<td><input type="email" id="email" name="email" ></td>
+			</tr>
+			<tr>
+				<td><label for="english">Marks in English:</label></td>
+				<td><input type="number" id="english" name="english" min="0" max="100" required></td>
+			</tr>
+			<tr>
+				<td><label for="physics">Marks in Physics:</label></td>
+				<td><input type="number" id="physics" name="physics" min="0" max="100" required></td>
+			</tr>
+			<tr>
+				<td><label for="chemistry">Marks in Chemistry:</label></td>
+				<td><input type="number" id="chemistry" name="chemistry" min="0" max="100" required></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="Submit">
+					<input type="reset" value="Reset">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label for="total_percentage">Total Percentage of Marks Obtained:</label>
+					<div id="total_percentage"></div> <!-- Changed from textarea to div -->
+				</td>
+			</tr>
+		</table>
+	</form>
+	<script >
+		document.getElementById('studentForm').addEventListener('submit', function (event) {
+			event.preventDefault(); // Prevent form submission
+
+			// Retrieve input values
+			var english = parseFloat(document.getElementById('english').value);
+			var physics = parseFloat(document.getElementById('physics').value);
+			var chemistry = parseFloat(document.getElementById('chemistry').value);
+
+			// Calculate total percentage of marks obtained
+			var totalMarks = english + physics + chemistry;
+			var totalPercentage = (totalMarks / 300) * 100; // Assuming each subject is out of 100 marks
+
+			// Display total percentage in div
+			document.getElementById('total_percentage').textContent = "Total Percentage of Marks Obtained: " + totalPercentage.toFixed(2) + '%';
+		});
+	</script>
+</body>
+</html>
